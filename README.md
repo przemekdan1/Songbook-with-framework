@@ -1,4 +1,23 @@
-# ZTPAI
+# Dependencies:
+**Developer tools**
+- Lombok
+- Spring Boot DevTools
+  
+**Web**
+- Spring Web
+- Rest Repositories
+  
+**SQL**
+- PosgreSQL Driver
+- Spring Data JPA
+- JDBC API
+
+**Security**
+- Spring Security
+- OAuth2 Authorization Server
+
+
+# ZTPAI - notes
 
 - musi być api miedzy front a backend
 - dema, a kolejnymi progresscheckami, z góry nałozony czas na zadanie
