@@ -1,0 +1,35 @@
+main.song{
+    display: flex;
+    align-items: center;
+}
+.song div{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: Comfortaa;
+    word-wrap: break-word;
+}
+
+.song-title{
+    width: 70%;
+    height: 7%;
+    font-size: 48px;
+    font-weight: 700;
+}
+.song-artis{
+    width: 70%;
+    height: 4%;
+    font-size: 15px;
+    font-weight: 400;
+}
+.song-text{
+    width: 70%;
+    height: 89%;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+main.song img{
+    height: 100%;
+    margin-left: -24vw;
+}

@@ -1,0 +1,81 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+    overflow: auto;
+}
+
+.projects>div>img {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+}
+
+.projects>div>div {
+    height: 50%;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: Comfortaa;
+}
+
+.projects>div {
+    height: 114px;
+    position: relative;
+    background: #D2D7DF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* margin: 0; */
+}
+
+section.project-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-form > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.project-form h1{
+    color: black;
+    font-size: 34px;
+    font-family: Poppins;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.projects h2{
+    color: black;
+    font-size: 24px;
+    font-family: Comfortaa;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-top: 38px;
+}
+
+.projects p{
+    color: black;
+    font-size: 12px;
+    font-family: Comfortaa;
+    font-weight: 300;
+    word-wrap: break-word;
+    margin: 2px;
+}
+
+.social-section i{
+    font-size: 15px;
+    font-family: Comfortaa;
+    font-weight: 300;
+}
+
