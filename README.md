@@ -17,6 +17,15 @@
 - OAuth2 Authorization Server
 
 
+# Roadmap
+
+**React app**
+- componets
+- conecting wit backend using axios
+- React routing
+- Adding models form and form validation
+- 
+
 # ZTPAI - notes
 
 - musi być api miedzy front a backend
