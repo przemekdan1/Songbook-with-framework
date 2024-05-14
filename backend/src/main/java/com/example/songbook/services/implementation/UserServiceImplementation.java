@@ -10,6 +10,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImplementation implements UserService {
@@ -31,4 +36,13 @@ public class UserServiceImplementation implements UserService {
                         new ResourceNotFoundException("User with id: "+userId+" doesn't exists."));
         return UserMapper.mapToUserDto(user);
     }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map((user) -> UserMapper.mapToUserDto(user))
+                .collect(Collectors.toList());
+    }
+
+
 }
