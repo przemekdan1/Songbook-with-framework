@@ -1,4 +1,4 @@
-package com.example.songbook.conf;
+package com.example.songbook.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfigurationLoginForm {
-
+/*
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -55,5 +55,5 @@ public class SecurityConfigurationLoginForm {
                 .build();
 
         return new InMemoryUserDetailsManager(admin);
-    }
+    }*/
 }
