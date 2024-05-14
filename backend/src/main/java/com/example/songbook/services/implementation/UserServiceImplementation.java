@@ -1,6 +1,7 @@
 package com.example.songbook.services.implementation;
 
 import com.example.songbook.dto.UserDto;
+import com.example.songbook.exception.ResourceNotFoundException;
 import com.example.songbook.mapper.UserMapper;
 import com.example.songbook.models.User;
 import com.example.songbook.repositories.UserRepository;
@@ -25,6 +26,9 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto getUserById(Long userId) {
-        return null;
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->
+                        new ResourceNotFoundException("User with id: "+userId+" doesn't exists."));
+        return UserMapper.mapToUserDto(user);
     }
 }
