@@ -44,5 +44,31 @@ public class UserServiceImplementation implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public UserDto updateUser(Long userId, UserDto updatedUser) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->
+                        new ResourceNotFoundException("User with id: "+userId+" doesn't exists."));
+
+        user.setId(updatedUser.getId());
+        user.setEmail(updatedUser.getEmail());
+        user.setPassword(updatedUser.getPassword());
+        user.setId_user_details(updatedUser.getId_user_details());
+        user.setId_role(updatedUser.getId_role());
+
+        User updatedUserObject =  userRepository.save(user);
+
+        return UserMapper.mapToUserDto(updatedUserObject);
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->
+                        new ResourceNotFoundException("User with id: "+userId+" doesn't exists."));
+
+        userRepository.deleteById(userId);
+    }
+
 
 }

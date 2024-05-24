@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//@Configuration
-//@EnableWebSecurity
-//@EnableMethodSecurity
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfigurationOAuth2 {
-/*
-    //@Bean
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http.authorizeRequests()
@@ -31,7 +31,7 @@ public class SecurityConfigurationOAuth2 {
         return http.build();
     }
 
-    //@Bean
+    @Bean
     JwtAuthenticationConverter authenticationConverter(){
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(source -> {
@@ -45,5 +45,5 @@ public class SecurityConfigurationOAuth2 {
         });
 
         return jwtAuthenticationConverter;
-    }*/
+    }
 }
