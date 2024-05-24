@@ -16,6 +16,32 @@
 - Spring Security
 - OAuth2 Authorization Server
 
+# REST API
+
+create : PUT localhost:8080/api/users
+```json
+{
+        "id": 1,
+        "email": "a@a.pl",
+        "password": "das",
+        "id_user_details": 1,
+        "id_role": 1
+}
+```
+get one: GET localhost:8080/api/users/1
+
+
+get all: GET localhost:8080/api/users
+
+update:  PUT localhost:8080/api/users/2
+```json
+{
+    "email": "c@c.pl",
+    "password": "dddd",
+    "id_user_details": 2,
+    "id_role": 1
+}
+```
 
 # Roadmap
 
