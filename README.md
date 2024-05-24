@@ -1,40 +1,57 @@
-# Dependencies:
-**Developer tools**
-- Lombok
-- Spring Boot DevTools
-  
-**Web**
-- Spring Web
-- Rest Repositories
-  
-**SQL**
-- PosgreSQL Driver
-- Spring Data JPA
-- JDBC API
+# Web Application Project
 
-**Security**
-- Spring Security
-- OAuth2 Authorization Server
+## Dependencies
 
-# REST API
+### Developer Tools
 
-create : PUT localhost:8080/api/users
+- **Lombok**: Simplifies Java code by automatically generating boilerplate code such as getters, setters, and constructors.
+- **Spring Boot DevTools**: Enhances the development experience with features like automatic restarts, live reload, and configurations for development environments.
+
+### Web
+
+- **Spring Web**: Provides comprehensive support for building web applications, including RESTful services.
+- **Rest Repositories**: Facilitates the creation of hypermedia-driven RESTful repositories.
+
+### SQL
+
+- **PostgreSQL Driver**: Enables connectivity to PostgreSQL databases.
+- **Spring Data JPA**: Simplifies database access with JPA-based repositories.
+- **JDBC API**: Allows for direct interaction with relational databases using JDBC.
+
+### Security
+
+- **Spring Security**: Provides robust authentication and authorization capabilities.
+- **OAuth2 Authorization Server**: Implements OAuth2 protocols for secure and standardized authorization.
+
+## REST API
+
+### Add User
+
+Endpoint: POST localhost:8080/api/users
+
+Request Body:
+
 ```json
 {
-        "id": 1,
-        "email": "a@a.pl",
-        "password": "das",
-        "id_user_details": 1,
-        "id_role": 1
+    "id": 1,
+    "email": "a@a.pl",
+    "password": "das",
+    "id_user_details": 1,
+    "id_role": 1
 }
 ```
-get one: GET localhost:8080/api/users/1
+### Get User
+Endpoint: GET localhost:8080/api/users/1
 
+### Get All Users
+Endpoint: GET localhost:8080/api/users
 
-get all: GET localhost:8080/api/users
+### Update User
+Endpoint: PUT localhost:8080/api/users/2
 
-update:  PUT localhost:8080/api/users/2
-```json
+Request Body:
+
+```JSON
 {
     "email": "c@c.pl",
     "password": "dddd",
@@ -42,6 +59,8 @@ update:  PUT localhost:8080/api/users/2
     "id_role": 1
 }
 ```
+### Delete User
+Endpoint: DELETE localhost:8080/api/users/3
 
 # Roadmap
 
