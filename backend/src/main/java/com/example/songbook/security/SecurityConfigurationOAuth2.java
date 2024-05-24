@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+//@Configuration
+//@EnableWebSecurity
+//@EnableMethodSecurity
 public class SecurityConfigurationOAuth2 {
-
+/*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
@@ -45,5 +45,5 @@ public class SecurityConfigurationOAuth2 {
         });
 
         return jwtAuthenticationConverter;
-    }
+    }*/
 }

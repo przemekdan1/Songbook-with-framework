@@ -14,7 +14,7 @@ public class HomeController {
     }
 
     @GetMapping("secure/path")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public String secured(){
         return "I'm secure";
     }
