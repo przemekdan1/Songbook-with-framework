@@ -52,6 +52,7 @@ public class UserServiceImplementation implements UserService {
 
         user.setId(updatedUser.getId());
         user.setEmail(updatedUser.getEmail());
+        user.setUsername(updatedUser.getUsername());
         user.setPassword(updatedUser.getPassword());
         user.setId_user_details(updatedUser.getId_user_details());
         user.setId_role(updatedUser.getId_role());

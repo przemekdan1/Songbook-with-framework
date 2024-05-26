@@ -1,4 +1,6 @@
 import React,{useState} from 'react';
+import {createUser} from "../services/UserService.js";
+import {useNavigate} from "react-router-dom";
 
 const UserComponent = () => {
 
@@ -6,12 +8,19 @@ const UserComponent = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigator = useNavigate();
+
 
     function saveUser(e){
         e.preventDefault();
 
         const user = {username, email, password};
         console.log(user)
+
+        createUser(user).then((response) => {
+            console.log(response.data);
+            navigator('/users')
+        })
     }
 
 
