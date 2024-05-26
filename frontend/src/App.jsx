@@ -18,6 +18,8 @@ function App() {
                 <Route path='/users' element={<UserListComponent />} />
                 {/* http://localhost:3000/add-user */}
                 <Route path='/add-user' element={<UserComponent />} />
+                {/* http://localhost:3000/update-user/1 */}
+                <Route path='/update-user/:id' element={<UserComponent />} />
             </Routes>
             <FooterComponent />
         </BrowserRouter>

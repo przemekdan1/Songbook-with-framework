@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
-import {createUser} from "../services/UserService.js";
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {createUser, getUserById, updateUser} from "../services/UserService.js";
+import {useNavigate,useParams} from "react-router-dom";
 const UserComponent = () => {
 
     const [email, setEmail] = useState('');
@@ -8,6 +8,20 @@ const UserComponent = () => {
     const [password, setPassword] = useState('');
 
     const navigator = useNavigate();
+
+    const {id} = useParams();
+
+    useEffect(() => {
+        if(id){
+            getUserById(id).then((response) => {
+                setUsername(response.data.username);
+                setEmail(response.data.email);
+                setPassword(response.data.password);
+            }).catch(error=>{
+                console.error(error);
+            })
+        }
+    }, [id]);
 
     const [errors, setErrors] = useState({
         email:'',
@@ -46,17 +60,39 @@ const UserComponent = () => {
     }
 
 
-    function saveUser(e){
+    function saveOrUpdateUser(e){
         e.preventDefault();
 
         if(validateForm()){
+
             const user = {username, email, password};
             console.log(user)
 
-            createUser(user).then((response) => {
-                console.log(response.data);
-                navigator('/users')
-            })
+            if(id){
+                updateUser(id,user).then((response) => {
+                    console.log(response.data);
+                    navigator('/users');
+                }).catch(error=>{
+                    console.error(error);
+                })
+            }else{
+                createUser(user).then((response) => {
+                    console.log(response.data);
+                    navigator('/users')
+                }).catch(error=>{
+                    console.error(error);
+                })
+            }
+
+
+        }
+    }
+
+    function pageTitle(){
+        if(id){
+            return <h2 className='text-center'>Update User</h2>
+        }else{
+            return <h2 className='text-center'>Add User</h2>
         }
     }
 
@@ -68,7 +104,9 @@ const UserComponent = () => {
             <br/>
             <div className='row'>
                 <div className='card col-md-6 offset-md-3 offset-md-3">'>
-                    <h2 className='text-center'>Create User</h2>
+                    {
+                        pageTitle()
+                    }
                     <div className='card-body'>
                         <form>
                             <div className='form-group'>
@@ -110,7 +148,7 @@ const UserComponent = () => {
                                 {errors.password && <div className='invalid-feedback'>{errors.password}</div>}
                             </div>
                             <br/>
-                            <button className='btn btn-success me-2' onClick={saveUser}>Submit</button>
+                            <button className='btn btn-success me-2' onClick={saveOrUpdateUser}>Submit</button>
                             <button className='btn btn-danger' onClick={() => navigator('/users')}>Discard</button>
 
                         </form>

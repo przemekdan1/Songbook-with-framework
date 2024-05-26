@@ -18,6 +18,10 @@ const UserListComponent = () => {
     function addNewUser(){
         navigator('/add-user')
     }
+
+    function updateUser(id){
+        navigator(`/update-user/${id}`)
+    }
     
     
 
@@ -31,6 +35,7 @@ const UserListComponent = () => {
                     <th>User id</th>
                     <th>Email</th>
                     <th>Username</th>
+                    <th>Operations</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,6 +45,9 @@ const UserListComponent = () => {
                             <td>{user.id}</td>
                             <td>{user.email}</td>
                             <td>{user.username}</td>
+                            <td>
+                                <button className='btn btn-info' onClick={()=>updateUser(user.id)}>Update</button>
+                            </td>
                         </tr>)
                 }
                 </tbody>
