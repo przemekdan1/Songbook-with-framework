@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -35,6 +36,14 @@ public class User implements UserDetails {
     @Column(name="id_role")
     private long id_role;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Profile profile;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Rating> ratings;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Favourite> favourites;
 
     @Enumerated(EnumType.STRING)
     @Transient

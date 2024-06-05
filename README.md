@@ -108,6 +108,38 @@ Response body:
 ```
 
 
+## Database
+
+### ERD Diagram
+
+![alt text](image.png)
+
+
+### Relationships
+
+- **artist** and **song**:
+  - One-to-Many: Each artist can have multiple songs. The relationship is established by the `artist_id` foreign key in the `song` table referencing the `id` in the `artist` table.
+
+- **category** and **song**:
+  - One-to-Many: Each category can have multiple songs. The relationship is established by the `category_id` foreign key in the `song` table referencing the `id` in the `category` table.
+
+- **users** and **rating**:
+  - One-to-Many: Each user can give multiple ratings to different songs. The relationship is established by the `user_id` foreign key in the `rating` table referencing the `id` in the `users` table.
+
+- **song** and **rating**:
+  - One-to-Many: Each song can receive multiple ratings from different users. The relationship is established by the `song_id` foreign key in the `rating` table referencing the `id` in the `song` table.
+
+- **users** and **profile**:
+  - One-to-One: Each user has a single profile. The relationship is established by the `user_id` foreign key in the `profile` table referencing the `id` in the `users` table.
+
+- **users** and **favourite**:
+  - Many-to-Many: Users can have multiple favorite songs, and each song can be a favorite of multiple users. This relationship is managed by the `favourite` table, where `user_id` references the `id` in the `users` table and `song_id` references the `id` in the `song` table.
+
+- **song** and **favourite**:
+  - Many-to-Many: Songs can be favorited by multiple users, and each user can have multiple favorite songs. This relationship is managed by the `favourite` table, where `song_id` references the `id` in the `song` table and `user_id` references the `id` in the `users` table.
+
+
+
 # Roadmap
 
 **React app**
