@@ -1,0 +1,14 @@
+.login-container {
+    display: flex;
+    height: 100%;
+}
+
+.login-content {
+    flex-grow: 1;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #007b00; /* Zielony kolor */
+    height: 100vh;
+}

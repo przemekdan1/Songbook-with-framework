@@ -1,0 +1,18 @@
+.auth-layout {
+    display: flex;
+    height: 100vh; /* Make sure it takes the full height of the viewport */
+}
+
+.auth-layout .sidebar {
+    width: 35%;
+    height: 100%;
+    background-color: #009041;
+    border-right: 3px black solid;
+}
+
+.auth-layout .content {
+    flex: 3; /* Content takes up 3 parts of the space */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the content */
+}
