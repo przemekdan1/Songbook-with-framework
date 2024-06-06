@@ -23,7 +23,9 @@
 - **Spring Security**: Provides robust authentication and authorization capabilities.
 - **OAuth2 Authorization Server**: Implements OAuth2 protocols for secure and standardized authorization.
 
-
+### Messaging
+- **Spring for RabbitMQ**
+- **AMPQ**
 
 ## REST API
 
@@ -139,6 +141,15 @@ Response body:
   - Many-to-Many: Songs can be favorited by multiple users, and each user can have multiple favorite songs. This relationship is managed by the `favourite` table, where `song_id` references the `id` in the `song` table and `user_id` references the `id` in the `users` table.
 
 
+## RabbitMQ
+
+**Sending message**
+
+http://localhost:8080/api/publish?message=Hello
+
+**Reciving message**
+
+![alt text](image-1.png)
 
 # Roadmap
 
