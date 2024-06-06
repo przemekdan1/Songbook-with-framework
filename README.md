@@ -143,6 +143,10 @@ Response body:
 
 ## RabbitMQ
 
+**Starting container**
+docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3.13.3-management
+
+
 **Sending message**
 
 http://localhost:8080/api/publish?message=Hello
