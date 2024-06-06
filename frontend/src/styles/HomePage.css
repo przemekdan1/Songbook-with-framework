@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    height: 80vh;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid black;
+    margin-top: 30px;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section {
+    margin-bottom: -40px;
+}

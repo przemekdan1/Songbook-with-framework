@@ -1,13 +1,14 @@
 import './App.css'
-import UserListComponent from "./components/UserListComponent.jsx";
+import UserListComponent from "./components/users/UserListComponent.jsx";
 import HeaderComponent from "./components/HeaderComponent.jsx";
 import FooterComponent from "./components/FooterComponent.jsx";
 import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
-import HelloWorld from "./components/HelloWorld.jsx";
-import UserComponent from "./components/UserComponent.jsx";
-import SidebarComponent from "./components/SidebarComponent.jsx";
-import LoginComponent from "./components/LoginComponent.jsx";
-import RegisterComponent from "./components/RegisterComponent.jsx";
+import UserComponent from "./components/users/UserComponent.jsx";
+import SidebarComponent from "./components/loginsites/SidebarComponent.jsx";
+import LoginComponent from "./components/loginsites/LoginComponent.jsx";
+import RegisterComponent from "./components/loginsites/RegisterComponent.jsx";
+import CategoryList from "./components/CategoryList.jsx";
+import HomePage from "./components/HomePage.jsx";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function Layout(){
                             <Route path='/add-user' element={<UserComponent />} />
                             {/* http://localhost:3000/update-user/1 */}
                             <Route path='/update-user/:id' element={<UserComponent />} />
+                            {/* http://localhost:3000/home */}
+                            <Route path="/home" element={<HomePage />} />
                         </Routes>
                     </div>
                     <FooterComponent />

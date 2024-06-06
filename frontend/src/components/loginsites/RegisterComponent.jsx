@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/LoginComponent.css';
+import '../../styles/LoginComponent.css';
 
 function RegisterComponent() {
     return (

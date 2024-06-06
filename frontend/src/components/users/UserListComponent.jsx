@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
-import {deleteUser, listUsers} from "../services/UserService.js";
+import {deleteUser, listUsers} from "../../services/UserService.js";
 
 const UserListComponent = () => {
 
