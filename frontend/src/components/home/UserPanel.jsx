@@ -8,6 +8,10 @@ const UserPanel = () => {
     const handleNavigation = (page) => {
         if (page === 'Profile') {
             navigate('/profile');
+        } else if (page === 'Sign out') {
+            // Clear any authentication tokens or session data here
+            // Example: localStorage.removeItem('authToken');
+            navigate('/login');
         }
         // Add more navigation logic if needed
     };
@@ -30,6 +34,5 @@ const UserPanel = () => {
         </div>
     );
 }
-
 
 export default UserPanel;

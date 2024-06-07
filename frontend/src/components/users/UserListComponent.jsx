@@ -42,7 +42,10 @@ const UserListComponent = () => {
     return (
         <div className="container-users">
             <h2 className="text-center">User list</h2>
-            <button className='btn btn-primary mb-2' onClick={addNewUser}> Add user </button>
+            <div className="back-button" onClick={() => navigator('/home')}>
+                ←
+            </div>
+            <button className='btn btn-primary mb-2' onClick={addNewUser}> Add user</button>
             <table className="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -60,7 +63,8 @@ const UserListComponent = () => {
                             <td>{user.email}</td>
                             <td>{user.username}</td>
                             <td>
-                                <button className='btn btn-info me-2' onClick={() => updateUser(user.id)}>Update</button>
+                                <button className='btn btn-info me-2' onClick={() => updateUser(user.id)}>Update
+                                </button>
                                 <button className='btn btn-danger' onClick={() => removeUser(user.id)}>Delete</button>
                             </td>
                         </tr>)

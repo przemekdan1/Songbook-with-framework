@@ -1,57 +1,54 @@
-import React, {useEffect, useState} from 'react';
-import {createUser, getUserById, updateUser} from "../../services/UserService.js";
-import {useNavigate,useParams} from "react-router-dom";
-const UserComponent = () => {
+import React, { useEffect, useState } from 'react';
+import { createUser, getUserById, updateUser } from "../../services/UserService.js";
+import { useNavigate, useParams } from "react-router-dom";
 
+const UserComponent = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    const navigator = useNavigate();
-
-    const {id} = useParams();
+    const navigate = useNavigate();
+    const { id } = useParams();
 
     useEffect(() => {
-        if(id){
+        if (id) {
             getUserById(id).then((response) => {
                 setUsername(response.data.username);
                 setEmail(response.data.email);
                 setPassword(response.data.password);
-            }).catch(error=>{
+            }).catch(error => {
                 console.error(error);
-            })
+            });
         }
     }, [id]);
 
     const [errors, setErrors] = useState({
-        email:'',
-        username:'',
-        password:''
+        email: '',
+        username: '',
+        password: ''
     });
 
-    function validateForm(){
+    function validateForm() {
         let valid = true;
+        const errorCopy = { ...errors };
 
-        const errorCopy = {...errors}
-
-        if(email.trim()){
-            errorCopy.email ='';
-        }else{
-            errorCopy.email ='Email required';
+        if (email.trim()) {
+            errorCopy.email = '';
+        } else {
+            errorCopy.email = 'Email required';
             valid = false;
         }
 
-        if(username.trim()){
-            errorCopy.username ='';
-        }else{
-            errorCopy.username ='Username required';
+        if (username.trim()) {
+            errorCopy.username = '';
+        } else {
+            errorCopy.username = 'Username required';
             valid = false;
         }
 
-        if(password.trim()){
-            errorCopy.password ='';
-        }else{
-            errorCopy.password ='Password required';
+        if (password.trim()) {
+            errorCopy.password = '';
+        } else {
+            errorCopy.password = 'Password required';
             valid = false;
         }
 
@@ -59,54 +56,46 @@ const UserComponent = () => {
         return valid;
     }
 
-
-    function saveOrUpdateUser(e){
+    function saveOrUpdateUser(e) {
         e.preventDefault();
 
-        if(validateForm()){
+        if (validateForm()) {
+            const user = { username, email, password };
+            console.log(user);
 
-            const user = {username, email, password};
-            console.log(user)
-
-            if(id){
-                updateUser(id,user).then((response) => {
+            if (id) {
+                updateUser(id, user).then((response) => {
                     console.log(response.data);
-                    navigator('/users');
-                }).catch(error=>{
+                    navigate('/users');
+                }).catch(error => {
                     console.error(error);
-                })
-            }else{
+                });
+            } else {
                 createUser(user).then((response) => {
                     console.log(response.data);
-                    navigator('/users')
-                }).catch(error=>{
+                    navigate('/users');
+                }).catch(error => {
                     console.error(error);
-                })
+                });
             }
-
-
         }
     }
 
-    function pageTitle(){
-        if(id){
-            return <h2 className='text-center'>Update User</h2>
-        }else{
-            return <h2 className='text-center'>Add User</h2>
+    function pageTitle() {
+        if (id) {
+            return <h2 className='text-center'>Update User</h2>;
+        } else {
+            return <h2 className='text-center'>Add User</h2>;
         }
     }
-
-
 
     return (
         <div className="container-users">
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div className='row'>
-                <div className='card col-md-6 offset-md-3 offset-md-3">'>
-                    {
-                        pageTitle()
-                    }
+                <div className='card col-md-6 offset-md-3 offset-md-3'>
+                    {pageTitle()}
                     <div className='card-body'>
                         <form>
                             <div className='form-group'>
@@ -114,7 +103,7 @@ const UserComponent = () => {
                                 <input
                                     type="text"
                                     id="username"
-                                    className={`form-control ${errors.username ? 'is-invalid': ''}`}
+                                    className={`form-control ${errors.username ? 'is-invalid' : ''}`}
                                     placeholder="Enter your username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
@@ -127,7 +116,7 @@ const UserComponent = () => {
                                 <input
                                     type="text"
                                     id="email"
-                                    className={`form-control ${errors.email ? 'is-invalid': ''}`}
+                                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                     placeholder="Enter your email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -140,7 +129,7 @@ const UserComponent = () => {
                                 <input
                                     type="password"
                                     id="password"
-                                    className={`form-control ${errors.password ? 'is-invalid': ''}`}
+                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                     placeholder="**********"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
@@ -149,8 +138,7 @@ const UserComponent = () => {
                             </div>
                             <br/>
                             <button className='btn btn-success me-2' onClick={saveOrUpdateUser}>Submit</button>
-                            <button className='btn btn-danger' onClick={() => navigator('/users')}>Discard</button>
-
+                            <button className='btn btn-danger' onClick={() => navigate('/users')}>Discard</button>
                         </form>
                     </div>
                 </div>

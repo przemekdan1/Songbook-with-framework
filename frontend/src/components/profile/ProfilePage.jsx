@@ -7,6 +7,7 @@ import '../../styles/HomePage.css';
 import UserProfile from "./UserProfile.jsx";
 import FavoriteSongs from "./FavouriteSongList.jsx";
 import {useNavigate} from "react-router-dom";
+import UserButtons from "./UserButtons.jsx";
 
 const ProfilePage = () => {
 
@@ -28,6 +29,7 @@ const ProfilePage = () => {
                     ←
                 </div>
                 <UserProfile name="Name" surname="Surname"/>
+                <UserButtons/>
                 <FavoriteSongs/>
             </div>
         </div>

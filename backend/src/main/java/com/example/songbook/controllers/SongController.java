@@ -3,19 +3,24 @@ package com.example.songbook.controllers;
 import com.example.songbook.models.Song;
 import com.example.songbook.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class SongController {
 
     @Autowired
-    SongRepository repo;
+    private final SongRepository songRepository;
 
-    @PostMapping("/addSong")
-    public void addPerson (@RequestBody Song song){
-        repo.save(song);
+    @Autowired
+    public SongController(SongRepository songRepository) {
+        this.songRepository = songRepository;
+    }
+
+    @GetMapping("/api/songs")
+    public List<Song> getAllSongs() {
+        return songRepository.findAll();
     }
 }
-
