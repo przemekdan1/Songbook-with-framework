@@ -4,6 +4,7 @@ import com.example.songbook.dto.UserDto;
 import com.example.songbook.exception.ResourceNotFoundException;
 import com.example.songbook.mapper.UserMapper;
 import com.example.songbook.models.User;
+import com.example.songbook.models.Role;
 import com.example.songbook.repositories.UserRepository;
 import com.example.songbook.services.UserService;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -69,6 +71,21 @@ public class UserServiceImplementation implements UserService {
 
         userRepository.deleteById(userId);
     }
+
+    @Override
+    public User setAdminRole(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setRole(Role.ADMIN);
+            userRepository.save(user);
+            System.out.println("Role for user " + user.getUsername() + " is set to: " + user.getRole());
+            return user;
+        } else {
+            throw new RuntimeException("User not found with ID: " + userId);
+        }
+    }
+
 
 
 }

@@ -46,19 +46,18 @@ public class User implements UserDetails {
     private Set<Favourite> favourites;
 
     @Enumerated(EnumType.STRING)
-    @Transient
+    @Column(name = "role", nullable = false)
     private Role role = Role.USER;
-
 
     @Override
     public String getUsername() {
         return this.email;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
-
 
     @Override
     public boolean isAccountNonExpired() {

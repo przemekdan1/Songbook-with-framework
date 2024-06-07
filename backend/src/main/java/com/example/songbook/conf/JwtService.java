@@ -5,14 +5,17 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
@@ -42,10 +45,15 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-
     public String generateToken(
             Map<String, Object> claims,
             UserDetails userDetails) {
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+        String roles = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+        claims.put("roles", roles);
+
         return Jwts
                 .builder()
                 .setClaims(claims)
@@ -57,21 +65,22 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>() , userDetails);
+        return generateToken(new HashMap<>(), userDetails);
     }
-
-
 
     public boolean isTokenValid(String jwtToken, UserDetails userDetails) {
         final String email = extractEmail(jwtToken);
         return (email.equals(userDetails.getUsername())) && !isTokenExpired(jwtToken);
     }
 
-
     private Date extractExpiration(String jwtToken) {
         return extractClaim(jwtToken, Claims::getExpiration);
     }
     private boolean isTokenExpired(String jwtToken) {
         return extractExpiration(jwtToken).before(new Date());
+    }
+
+    public String extractRoles(String jwtToken) {
+        return extractClaim(jwtToken, claims -> (String) claims.get("roles"));
     }
 }

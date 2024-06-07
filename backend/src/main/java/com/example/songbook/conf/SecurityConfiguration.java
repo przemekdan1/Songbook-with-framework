@@ -19,23 +19,20 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private static final String[] WHITE_LIST_URL = {
             "/api/auth/authenticate",
-            "/api/auth/register"
+            "/api/auth/register",
+            "/api/publish?message*"
+
     };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req ->
-                        req.requestMatchers(WHITE_LIST_URL)
-                                .permitAll()
-                                // .requestMatchers("/api/admin/**").hasAnyRole(ADMIN.name())
-                                // .requestMatchers(GET, "/api/admin/**").hasAnyAuthority(ADMIN_READ.name())
-                                // .requestMatchers(POST, "/api/admin/**").hasAnyAuthority(ADMIN_CREATE.name())
-                                // .requestMatchers(PUT, "/api/admin/**").hasAnyAuthority(ADMIN_UPDATE.name())
-                                // .requestMatchers(DELETE, "/api/admin/**").hasAnyAuthority(ADMIN_DELETE.name())
-                                .anyRequest()
-                                .authenticated())
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers(WHITE_LIST_URL).permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
