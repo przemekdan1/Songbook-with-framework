@@ -99,7 +99,7 @@ const UserComponent = () => {
 
 
     return (
-        <div className="container">
+        <div className="container-users">
             <br/>
             <br/>
             <div className='row'>

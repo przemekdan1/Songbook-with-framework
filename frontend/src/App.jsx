@@ -7,8 +7,11 @@ import UserComponent from "./components/users/UserComponent.jsx";
 import SidebarComponent from "./components/loginsites/SidebarComponent.jsx";
 import LoginComponent from "./components/loginsites/LoginComponent.jsx";
 import RegisterComponent from "./components/loginsites/RegisterComponent.jsx";
-import CategoryList from "./components/CategoryList.jsx";
-import HomePage from "./components/HomePage.jsx";
+import CategoryList from "./components/home/CategoryList.jsx";
+import HomePage from "./components/home/HomePage.jsx";
+import HelloWorld from "./components/HelloWorld.jsx";
+import ProfilePage from "./components/profile/ProfilePage.jsx";
+import SongDetails from "./components/SongDetails.jsx";
 
 function App() {
   return (
@@ -50,6 +53,10 @@ function Layout(){
                             <Route path='/update-user/:id' element={<UserComponent />} />
                             {/* http://localhost:3000/home */}
                             <Route path="/home" element={<HomePage />} />
+                            {/* http://localhost:3000/profile */}
+                            <Route path="/profile" element={<ProfilePage />} />
+                            {/* http://localhost:3000/song/title */}
+                            <Route path="/song/:title" element={<SongDetails />} />
                         </Routes>
                     </div>
                     <FooterComponent />

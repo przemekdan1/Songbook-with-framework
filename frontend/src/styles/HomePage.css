@@ -1,4 +1,4 @@
-.container {
+.container-home {
     display: flex;
     height: 80vh;
 }
@@ -18,4 +18,11 @@
 
 .bottom-section {
     margin-bottom: -40px;
+}
+
+.right-side {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../public/hkoliba_logo3.svg';
+import logo from '../../../public/hkoliba_logo3.svg';
 
 
 const LogoWrapper = styled.div`

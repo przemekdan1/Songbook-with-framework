@@ -2,12 +2,13 @@
 import React from 'react';
 import CategoryList from './CategoryList';
 import UserPanel from "./UserPanel";
-import LogoComponent from "./LogoComponent.jsx";
-import '../styles/HomePage.css';
+import LogoComponent from "./LogoComponent";
+import SongList from "./SongList"; // Correctly import SongList
+import '../../styles/HomePage.css';
 
 const HomePage = () => {
     return (
-        <div className="container">
+        <div className="container-home">
             <div className="left-side">
                 <div className="top-section">
                     <LogoComponent />
@@ -16,6 +17,9 @@ const HomePage = () => {
                 <div className="bottom-section">
                     <UserPanel />
                 </div>
+            </div>
+            <div className="right-side">
+                <SongList /> {/* Use the imported SongList component */}
             </div>
         </div>
     );

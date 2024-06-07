@@ -1,0 +1,51 @@
+.song-details-container {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.back-button {
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    color: #0056b3;
+}
+
+.song-details-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.song-details-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.song-details-header h3 {
+    font-size: 24px;
+    color: #666;
+}
+
+.song-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.song-lyrics, .song-chords {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.song-lyrics {
+    margin-right: 20px;
+}
