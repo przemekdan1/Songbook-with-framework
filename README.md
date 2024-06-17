@@ -1,4 +1,6 @@
-# Web Application Project
+# Songbook web application project
+
+Songbook is a modern application that serves as a digital adaptation of a traditional songbook. It has been specifically designed for the club “Hawiarska Koliba” to enable quick and easy song search from an extensive database.
 
 ## Dependencies
 
@@ -26,6 +28,19 @@
 ### Messaging
 - **Spring for RabbitMQ**
 - **AMPQ**
+
+### Web
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/78061b24-fba8-4522-a02d-2fbbb90ad05c)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/f1ecaf2d-5f31-4ced-a0c6-f1c1d27940bb)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/31bad21e-1f31-423d-840c-dfabb897b1bf)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/2c98994c-c8a3-4f69-9eb1-633bf0236a6b)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/43e7376d-d7f9-4111-87c6-ad55b25c3a04)
+
+### Mobile
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/69a2d567-406e-4c8d-a292-df2b45dc403a)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/68774b17-1335-4869-8c59-ee7049fc7846)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/183b77d4-8838-4706-9754-21a6aecd5982)
+![image](https://github.com/przemekdan1/Songbook/assets/101727232/9771996f-dd8f-4843-b30a-c8b2cfa0a817)
 
 ## REST API
 
@@ -152,9 +167,6 @@ docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3.13.3-management
 
 http://localhost:8080/api/publish?message=Hello
 
-**Reciving message**
-
-![alt text](image-1.png)
 
 
 ## Swagger
